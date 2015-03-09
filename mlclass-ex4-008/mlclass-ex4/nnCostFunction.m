@@ -62,18 +62,11 @@ Theta2_grad = zeros(size(Theta2));
 %               and Theta2_grad from Part 2.
 %
 
+Y = zeros(size(m, num_labels));
 hx = feedForward(X, m, Theta1, Theta2);
-y  = generateY(y, num_labels, m);
-J  = costFunction(hx, y, num_labels, m); 
-
-
-
-
-
-
-
-
-
+Y  = eye(num_labels)(y, :);
+J  = costFunction(hx, Y, num_labels, m) + regularization(Theta1, Theta2, lambda, m); 
+[Theta1_grad Theta2_grad] = backProp(Theta1, Theta2, Theta1_grad, Theta2_grad, X, Y, m, lambda);
 
 % -------------------------------------------------------------
 

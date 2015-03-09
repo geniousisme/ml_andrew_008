@@ -1,7 +1,5 @@
-function y = generateY(y, num_labels, m)
-  tmpY = zeros(m, num_labels);
+function Y = generateY(y, num_labels, m, Y)
   for idx = 1:m
-    tmpY(idx, y(idx)) = 1;
+    Y(idx, y(idx)) = 1;
   endfor
-  y = tmpY;
 end
